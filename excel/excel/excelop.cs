@@ -273,8 +273,15 @@ namespace excel
             var printCapability = defaultPrintQue.GetPrintCapabilities();
             ReadOnlyCollection<InputBin> binBox = printCapability.InputBinCapability;
             string name = defaultPrintQue.Name.ToString();
-            PrintDocument prdoc = new PrintDocument();
-            string name_p = prdoc.PrinterSettings.PrinterName;
+            PrintDocument printDoc = new PrintDocument();
+            string name_p = printDoc.PrinterSettings.PrinterName;
+            PaperSource pkSource;
+            for (int i = 0; i < printDoc.PrinterSettings.PaperSources.Count; i++)
+            {
+                pkSource = printDoc.PrinterSettings.PaperSources[i];
+               name_p = pkSource.SourceName;
+               // comboPaperSource.Items.Add(pkSource);
+            }
             //   AutoSheetFeeder
             //foreach(InputBin box in binBox)
             //{

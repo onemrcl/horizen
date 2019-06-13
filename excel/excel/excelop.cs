@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.Reflection;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Printing;//using System.Drawing.Printing ;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -26,11 +28,12 @@ namespace excel
         public excelop(string _excelName)
         {
             init(_excelName);
+
             //  killExcel();
-            openExcel(_excelName);
-            setFormat();
+           // openExcel(_excelName);
+           // setFormat();
             printExcel();
-            closeExcel();
+           // closeExcel();
             // killExcel();
             // DeleteSheet(@"C:\Users\cl\Desktop\tx.xlsx");
             // createExcel(_excelName);
@@ -270,6 +273,8 @@ namespace excel
             var printCapability = defaultPrintQue.GetPrintCapabilities();
             ReadOnlyCollection<InputBin> binBox = printCapability.InputBinCapability;
             string name = defaultPrintQue.Name.ToString();
+            PrintDocument prdoc = new PrintDocument();
+            string name_p = prdoc.PrinterSettings.PrinterName;
             //   AutoSheetFeeder
             //foreach(InputBin box in binBox)
             //{
